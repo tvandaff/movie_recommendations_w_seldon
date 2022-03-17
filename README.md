@@ -6,8 +6,8 @@
 
 ## The Files: 
 - Seldonmodel folder: contains the seldon deployment files from my experiments
-    - canary.yaml - code for deploying two models to receive incoming requests (20% of requests sent to canary model) 
-    - deployment.yaml - code for deploying a single Seldon model
+    - canary.yaml: code for deploying two models to receive incoming requests (20% of requests sent to canary model) 
+    - deployment.yaml: code for deploying a single Seldon model
     - environment: commandline variables for Seldon execution
     - Model.py: Simple baseline model execution code
     - Model2.py: SVD model execution code
