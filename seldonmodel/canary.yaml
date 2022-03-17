@@ -1,0 +1,38 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+   name: seldonmodel
+   namespace: seldon-system
+spec:
+   name: canarymodel
+   predictors:
+   - componentSpecs:
+     - spec:
+         containers:
+         - name: classifier
+           image: seldonmodelv1
+        terminationGracePeriodSeconds: 1
+     graph:
+       children: []
+       endpoint:
+         type: REST
+       name: classifier
+       type: MODEL
+    name: example
+    replicas: 1
+    traffic: 80
+  - componentSpecs:
+    - spec:
+      containers:
+      - name: classifier
+        image: seldonmodelv2
+        terminationGracePeriodSeconds: 1
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: classifier
+      type: MODEL
+    name: canarymodel
+    replicas: 1
+    traffic: 20

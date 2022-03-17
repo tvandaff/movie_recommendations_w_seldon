@@ -1,0 +1,21 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+   name: seldonmodel
+   namespace: seldon-system
+spec:
+   name: seldonmodel
+   predictors:
+   - componentSpecs:
+     - spec:
+         containers:
+         - name: classifier
+           image: seldonmodelv0
+     graph:
+       children: []
+       endpoint:
+         type: REST
+       name: classifier
+       type: MODEL
+    name: example
+    replicas: 1
